@@ -7,3 +7,14 @@ class TimeStampModel(models.Model):
     
     class Meta:
         abstract=True 
+        
+class Category(TimeStampModel):
+    name=models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering=["name"]
+        verbose_name="category"
+        verbose_name_plural="Categories"

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
   <head>
@@ -17,18 +18,17 @@
   </head>
   <body>
 
-    
+    {% include "newsportal/nav.html" %}
 
+    {% block content %}
+
+    {% endblock content %}
    
     <!-- Main Content Area -->
     <div class="container mt-4">
       <div class="row">
         <!-- Main News Section -->
         <div class="col-lg-8">
-         
-
-        
-
          
 
         <!-- Sidebar -->

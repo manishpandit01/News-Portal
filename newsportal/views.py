@@ -1,6 +1,8 @@
-from datetime import timezone
-
+from datetime import timedelta
+from django.utils import timezone
 from django.shortcuts import render
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
+
 
 from newsportal.models import Advertisement, Post
 

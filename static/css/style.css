@@ -464,9 +464,6 @@ body {
   /* Remove background, border, shadow from main container */
   height: 100%; /* Match height of form column */
 }
-[data-bs-theme="dark"] .contact-details-section {
-  /* No specific dark mode background needed for container now */
-}
 .contact-details-section h3 {
   color: var(--primary-green); /* Title color */
   margin-bottom: 25px;

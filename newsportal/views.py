@@ -55,7 +55,7 @@ class HomeView(SidebarMixin,TemplateView):
         
         return context
     
-class PostListView(ListView):
+class PostListView(SidebarMixin,ListView):
     model=Post
     template_name="newsportal/list/list.html"
     context_object_name="posts"

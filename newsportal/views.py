@@ -45,14 +45,6 @@ class HomeView(SidebarMixin,TemplateView):
             published_at__isnull=False, status="active", published_at__gte=one_week_ago
         ).order_by("-published_at","-views_count")[:5]
         
-        context["popular_post"]=Post.objects.filter(
-            published_at__isnull=False,status="active"
-        ).order_by("-published_at")[:5]
-        
-        context["advertisement"]=(
-            Advertisement.objects.all().order_by("-created_at").first()
-        )
-        
         return context
     
 class PostListView(SidebarMixin,ListView):
@@ -66,7 +58,7 @@ class PostListView(SidebarMixin,ListView):
             published_at__isnull=False, status="active"
         ).order_by("-published_at")
         
-class PostDetailView(DetailView):
+class PostDetailView(SidebarMixin,DetailView):
     model=Post
     template_name="newsportal/detail/detail.html"
     context_object_name="post"

@@ -65,3 +65,15 @@ class PostListView(SidebarMixin,ListView):
         return Post.objects.filter(
             published_at__isnull=False, status="active"
         ).order_by("-published_at")
+        
+class PostDetailView(DetailView):
+    model=Post
+    template_name="newsportal/detail/detail.html"
+    context_object_name="post"
+    
+    def get_queryset(self):
+        query=super().get_queryset()
+        query=query.filter(published_at__isnull=False,status="active")
+        return query    
+        
+    

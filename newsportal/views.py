@@ -99,7 +99,7 @@ class PostByCategoryView(SidebarMixin,ListView):
             published_at__isnull=False,
             status="active",
             category__id=self.kwargs["category_id"],
-        ).order_by("published-at")
+        ).order_by("published_at")
         return query
     
 

@@ -32,7 +32,7 @@
               <div class="article-tags">
                 <strong>Tags:</strong>
                 {% for tag in post.tag.all %}
-                <a href="#">{{tag.name|title}}</a>
+                <a href="{% url 'post-by-tag' tag.pk %}">{{tag.name|title}}</a>
                 {% endfor %}
               </div>
             </footer>

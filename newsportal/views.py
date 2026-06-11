@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
 
-from newsportal.models import Advertisement, Post
+from newsportal.models import Advertisement, OurTeam, Post
 
 # Create your views here.
 class SidebarMixin:
@@ -117,5 +117,12 @@ class PostByTagView(SidebarMixin,ListView):
             ).order_by("published_at")
             return query
 
+class AboutView(TemplateView):
+    template_name="newsportal/about.html"
+    
+    def get_context_data(self,**kwargs):
+        context=super().get_context_data(**kwargs)
+        context["our_teams"]=OurTeam.objects.all()
+        return context
     
     

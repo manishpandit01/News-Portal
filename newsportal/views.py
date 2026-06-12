@@ -1,10 +1,14 @@
 from datetime import timedelta
+from email import message
+from django.urls import reverse_lazy
 from django.utils import timezone
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, ListView, TemplateView,SucesscMixin
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from django.contrib.messages.views import SuccessMessageMixin
 
 
-from newsportal.models import Advertisement, OurTeam, Post
+from newsportal.forms import ContactForm
+from newsportal.models import Advertisement, Contact, OurTeam, Post
 
 # Create your views here.
 class SidebarMixin:
@@ -124,4 +128,18 @@ class AboutView(TemplateView):
         context=super().get_context_data(**kwargs)
         context["our_teams"]=OurTeam.objects.all()
         return context
+    
+class ContactCreateView(SuccessMessageMixin,CreateView):
+    model=Contact
+    template_name="newsportal/contact.html"
+    form_class=ContactForm
+    success_url=reverse_lazy("contact")
+    success_message="Your message has been sent sucessfully."
+    
+    def form_invalid(self, form):
+        message.error(
+            self.request,"There was an error sending your message. please check the form."
+        )
+        return super().form_invalid(form)
+    
     

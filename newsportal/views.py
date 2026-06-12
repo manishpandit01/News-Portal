@@ -1,7 +1,7 @@
 from datetime import timedelta
 from django.utils import timezone
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from django.views.generic import CreateView, DetailView, ListView, TemplateView,SucesscMixin
 
 
 from newsportal.models import Advertisement, OurTeam, Post
@@ -124,5 +124,4 @@ class AboutView(TemplateView):
         context=super().get_context_data(**kwargs)
         context["our_teams"]=OurTeam.objects.all()
         return context
-    
     

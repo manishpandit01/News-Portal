@@ -1,5 +1,5 @@
 from datetime import timedelta
-from pyexpat.errors import messages
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.shortcuts import render
@@ -138,8 +138,7 @@ class ContactCreateView(SuccessMessageMixin,CreateView):
     
     def form_invalid(self, form):
         messages.error(
-            self.request,"There was an error sending your message. please check the form."
-        )
+            self.request,"There was an error sending your message. please check the form." )
         return super().form_invalid(form)
     
     
